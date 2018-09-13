@@ -6,15 +6,23 @@
     <title>Jukebox App</title>
 </head>
 
-<main>
-    <p>Welcome to my music player</p><br>
-    <ul>
-        <li><a href="default.asp">Home</a></li>
-        <li><a href="news.asp">News</a></li>
-        <li><a href="contact.asp">Contact</a></li>
-        <li><a href="about.asp">About</a></li>
-      </ul>
+<h1>Welcome to my music player!</h1><br>
 
+<div class="navbar">
+    <div class="file">
+        <button class="dropbtn">File
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="#">Load</a>
+            <a href="#">Save</a>
+        </div>
+    </div> 
+    <a id="about" href="#about">About</a>
+</div> <br>
+
+
+<main>
     <form method="post">
         <label for="music_directory">
             <input id="music_directory" type="text" placeholder="type here"><br>
