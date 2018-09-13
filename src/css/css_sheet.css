@@ -1,0 +1,11 @@
+/* 
+* css sheet 
+* Alexander Minser 
+* 9/13/2018
+*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

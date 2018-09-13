@@ -2,18 +2,27 @@
 <html>
 
 <head>
+    <link rel="stylesheet" type="text/css" href="../css/css_sheet.css">
     <title>Jukebox App</title>
 </head>
 
 <main>
     <p>Welcome to my music player</p><br>
-    <form>
+    <ul>
+        <li><a href="default.asp">Home</a></li>
+        <li><a href="news.asp">News</a></li>
+        <li><a href="contact.asp">Contact</a></li>
+        <li><a href="about.asp">About</a></li>
+      </ul>
+
+    <form method="post">
         <label for="music_directory">
             <input id="music_directory" type="text" placeholder="type here"><br>
         </label>
         <label for="explorer opener">
-            <input id="explorer_opener" type="file">
+            <input id="explorer_opener" type="file"><br>
         </label>
+        <input type="submit" value="submit"></button>
     </form>
 </main>
 
