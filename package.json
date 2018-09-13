@@ -1,0 +1,22 @@
+{
+  "name": "jukebox",
+  "version": "1.0.0",
+  "description": "dynamic music player using nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexanderMinser/Jukebox.git"
+  },
+  "author": "Alexander Minser",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexanderMinser/Jukebox/issues"
+  },
+  "homepage": "https://github.com/AlexanderMinser/Jukebox#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
