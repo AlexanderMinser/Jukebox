@@ -1,10 +1,8 @@
 // backend node js stuff
 // Alexander Minser
 
-var http = require('http')
-var fs = require('fs')
 
-
+/*
 fs.readdir(path, function(err, items) {
     console.log(items);
  
@@ -12,3 +10,4 @@ fs.readdir(path, function(err, items) {
         console.log(items[i]);
     }
 });
+*/
