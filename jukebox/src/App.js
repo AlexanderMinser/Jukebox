@@ -27,16 +27,39 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+                
+        <header>
+            <link rel="stylesheet" type="text/css" href="css_sheet.css"/>
+            <title>Jukebox App</title>
+        </header>
+
+        <h1>Welcome to my music player!</h1>
+
+        <div class="navbar">
+            <div class="file">
+                <button class="dropbtn">File
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Load</a>
+                    <a href="#">Save</a>
+                </div>
+            </div> 
+            <a id="about" href="#about">About</a>
+        </div> 
+      </div>
+    );
+  }
+}
+
+/*
+<header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-      </div>
-    );
-  }
-}
+*/
 
 export default App;
