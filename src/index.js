@@ -29,6 +29,10 @@ app.get('/', function(req, res){
 
  })
  
+ app.use(function(req, res, next) {
+    res.status(404);
+    res.send('404: File Not Found');
+ })
 
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))

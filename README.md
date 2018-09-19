@@ -2,6 +2,7 @@ dependencies:
 
 nodejs
 expressjs
+reactjs
 
 tools:
 npm
