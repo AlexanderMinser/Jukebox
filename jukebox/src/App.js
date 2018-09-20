@@ -5,23 +5,27 @@ import "./css_sheet.css";
 
 
 
-class DirectoryBar extends Component {
+class DirectoryFiles extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {selectedDir: null};
+    this.state = {fileList: null};
   }
 
   fetchData(){
-    fetch('/api', {
+    fetch('/api/music_dir', {
       headers: {"Content-Type": "application/json"}
     })
-    .then((res) => res.json())
-    .then((json) => this.state = json)
+    .then((res) => res.text())
+    .then(function(text) {
+      console.log(text);
+      return text; 
+    })
+    .then((text) => this.setState({fileList: text}));
   }
 
   render() {
-    if (this.state.selectedDir === null) {
+    if (this.state.fileList === null) {
       return (
         <div>
           <input type="text" placeholder="p-holder"></input>
@@ -30,7 +34,7 @@ class DirectoryBar extends Component {
       );
     } else {
       return (
-        <p>Seleted dir: {this.selectedDir}</p>
+        <p>Seleted dir: {this.state.fileList}</p>
       );
     }
     
@@ -67,11 +71,13 @@ class App extends Component {
     
     return (
       <div className="App">
+        <style>{'body { background-color: teal; }'}</style>
                 
         <header>
             <title>Jukebox App</title>
+           
         </header>
-        <h1>Welcome to my music player!</h1>
+        <h1 className="titleBar">Welcome to my music player!</h1>
 
         <div className="navbar">
             <div className="file">
@@ -85,7 +91,7 @@ class App extends Component {
             </div> 
             <a id="about" href="#about">About</a>
         </div> 
-        <DirectoryBar />
+        <DirectoryFiles />
       </div>
     );
   }

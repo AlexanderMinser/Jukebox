@@ -20,18 +20,19 @@ app.get('/api', function(req, res){
     res.json({foo: "bar"});
 });
 
+app.get('/api/music_dir', function(req, res) {
+    console.log('music req made');
+    fs.readdir('C:/FirmwareVerification', function(err, items) {
+        res.send(items);
+    });
+});
+
 app.post('/api',function(req,res){
     console.log('post req made')
     res.sendFile(path.resolve('../jukebox/public/index.html'));
     req.body = JSON.parse(JSON.stringify(req.body));
-    if (req.body.hasOwnProperty('button1')) {
-        /*
-        fs.readdir('C:/FirmwareVerification', function(err, items) {
-            console.log(items);
-            res.send(items);
-        });*/
-    }
-})
+});
+
 /*
 app.use(function(req, res, next) {
     console.log('use req made');
