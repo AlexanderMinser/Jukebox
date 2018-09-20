@@ -15,7 +15,15 @@ class App extends Component {
   
 
   componentDidMount() {
-    const response = async () => await fetch('/');
+    fetch('/api', {
+      headers: {"Content-Type": "application/json"}
+    })
+      .then((res) =>
+        res.json()
+      )
+      .then((json) => 
+        console.log(json)
+      );
     /*
     this.callApi()
       .then(res => this.setState({ response: res.express }))
