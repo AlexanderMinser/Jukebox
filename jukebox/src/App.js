@@ -4,6 +4,43 @@ import "./css_sheet.css";
 
 
 
+
+class DirectoryBar extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {selectedDir: null};
+  }
+
+  fetchData(){
+    fetch('/api', {
+      headers: {"Content-Type": "application/json"}
+    })
+    .then((res) => res.json())
+    .then((json) => this.state = json)
+  }
+
+  render() {
+    if (this.state.selectedDir === null) {
+      return (
+        <div>
+          <input type="text" placeholder="p-holder"></input>
+          <input type="submit" name="subbutton" value="submit" onClick={this.fetchData()}></input>
+        </div>
+      );
+    } else {
+      return (
+        <p>Seleted dir: {this.selectedDir}</p>
+      );
+    }
+    
+  }
+
+}
+
+
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -24,20 +61,7 @@ class App extends Component {
       .then((json) => 
         console.log(json)
       );
-    /*
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err)); */
   } 
-
-  callApi = async () => {
-    const response = await fetch('/');
-    const body = await response.json();
-    if (response.status !== 200) 
-      throw Error(body.message);
-
-    return body;
-  }; 
 
   render() {
     
@@ -45,10 +69,9 @@ class App extends Component {
       <div className="App">
                 
         <header>
-            <link rel="stylesheet" type="text/css" href="../../src/public/css_sheet.css"/>
             <title>Jukebox App</title>
         </header>
-        <h1>Welcome to my music player! Current tick:{this.state.date.toLocaleTimeString()}</h1>
+        <h1>Welcome to my music player!</h1>
 
         <div className="navbar">
             <div className="file">
@@ -62,6 +85,7 @@ class App extends Component {
             </div> 
             <a id="about" href="#about">About</a>
         </div> 
+        <DirectoryBar />
       </div>
     );
   }
