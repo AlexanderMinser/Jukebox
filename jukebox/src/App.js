@@ -71,26 +71,21 @@ class App extends Component {
     
     return (
       <div className="App">
-        <style>{'body { background-color: teal; }'}</style>
+        <style>{'body { background-color: teal; }'}</style>        
                 
-        <header>
-            <title>Jukebox App</title>
            
-        </header>
-        <h1 className="titleBar">Welcome to my music player!</h1>
+        <div className="titleBar">Jukebox</div>
+        <div className="titleBottom"></div>
+        <img src={require("./images/earbuds.jpeg")}  alt="earbuds"/>
 
-        <div className="navbar">
-            <div className="file">
-                <button className="dropbtn">File
-                    <i className="fa fa-caret-down"></i>
-                </button>
-               <div className="dropdown-content">
-                    <a href="">Load</a>
-                    <a href="">Save</a>
-                  </div> 
-            </div> 
-            <a id="about" href="#about">About</a>
-        </div> 
+        
+        <div className="sidenav">
+          <a href="#">About</a>
+          <a href="#">Services</a>
+          <a href="#">Clients</a>
+          <a href="#">Contact</a>
+        </div>
+
         <DirectoryFiles />
       </div>
     );
