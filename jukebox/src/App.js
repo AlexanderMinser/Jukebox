@@ -5,38 +5,48 @@ import "./css_sheet.css";
 
 
 
+
+class Song extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {name: '', 
+                  artist: '',
+                  album: '',
+                  year: '',
+                  genre: ''}
+  }
+
+  render() {
+    return (
+      <div>{this.state.name}</div>
+    );
+  }
+
+}
+
+
 class DirectoryFiles extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {fileList: null};
+    this.state = {songList: []};
   }
 
-  fetchData(){
+  componentDidMount(){
     fetch('/api/music_dir', {
       headers: {"Content-Type": "application/json"}
     })
     .then((res) => res.text())
     .then(function(text) {
       console.log(text);
-      return text; 
-    })
-    .then((text) => this.setState({fileList: text}));
+      this.setState({songList: text})
+    });
   }
 
   render() {
-    if (this.state.fileList === null) {
       return (
-        <div>
-          <input type="text" placeholder="p-holder"></input>
-          <input type="submit" name="subbutton" value="submit" onClick={this.fetchData()}></input>
-        </div>
+        <p>Songs: {this.state.songList}</p>
       );
-    } else {
-      return (
-        <p>Seleted dir: {this.state.fileList}</p>
-      );
-    }
     
   }
 

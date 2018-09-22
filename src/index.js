@@ -22,7 +22,8 @@ app.get('/api', function(req, res){
 
 app.get('/api/music_dir', function(req, res) {
     console.log('music req made');
-    fs.readdir('C:/FirmwareVerification', function(err, items) {
+    fs.readdir(__dirname, function(err, items) {
+        console.log(__dirname);
         res.send(items);
     });
 });
