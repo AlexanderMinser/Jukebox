@@ -9,16 +9,25 @@ import "./css_sheet.css";
 class Song extends Component {
   constructor(props) {
     super(props);
-    this.state = {name: '', 
+    this.state = {name: props.data, 
                   artist: '',
                   album: '',
                   year: '',
                   genre: ''}
   }
 
+  playSong() {
+    console.log('method ran');
+    fetch('/api/play_song', {
+      headers: {"Content-Type": "application/json"},
+      method: 'POST',
+      body: JSON.stringify({'name': this.state.name})
+    });
+  }
+
   render() {
     return (
-      <div>{this.state.name}</div>
+      <div onDoubleClick={() => this.playSong()}>{this.state.name}</div>
     );
   }
 
@@ -29,25 +38,25 @@ class DirectoryFiles extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {songList: []};
+    this.state = {songList: ''};
   }
 
   componentDidMount(){
     fetch('/api/music_dir', {
       headers: {"Content-Type": "application/json"}
     })
-    .then((res) => res.text())
-    .then(function(text) {
-      console.log(text);
-      this.setState({songList: text})
-    });
+    .then((res) => res.json())
+    .then((json) => this.setState(json));
   }
 
   render() {
-      return (
-        <p>Songs: {this.state.songList}</p>
-      );
-    
+    let songComponents = [];
+    for (let song of this.state.songList) {
+      songComponents.push(<Song data={song} />);
+    }
+    return (
+      <div>Songs: {songComponents}</div>
+    );
   }
 
 }
@@ -64,18 +73,6 @@ class App extends Component {
     };
   }
   
-
-  componentDidMount() {
-    fetch('/api', {
-      headers: {"Content-Type": "application/json"}
-    })
-      .then((res) =>
-        res.json()
-      )
-      .then((json) => 
-        console.log(json)
-      );
-  } 
 
   render() {
     

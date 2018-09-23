@@ -1,11 +1,13 @@
 // index.js for express to use
 
-const http = require('http')
 const fs = require('fs')
 const express = require('express')
 const path = require('path');
 const bodyParser = require('body-parser')
 const app = express()
+const lame = require('lame');
+const speaker = require('speaker');
+
 
 app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({
@@ -22,10 +24,21 @@ app.get('/api', function(req, res){
 
 app.get('/api/music_dir', function(req, res) {
     console.log('music req made');
-    fs.readdir(__dirname, function(err, items) {
-        console.log(__dirname);
-        res.send(items);
+    res.contentType('application/json');
+    fs.readdir('/media/alex/OS/Users/Alex/Music', function(err, items) {
+        const filtered = items.filter((item) => item.substr(-3) == 'mp3');
+        res.json({songList: filtered});
     });
+});
+
+app.post('/api/play_song', function(req, res) {
+    console.log('song sent: '+req.body.name);
+    /*const song = 
+    fs.createReadStream(song)
+    .pipe(new lame.Decoder())
+    .on('format', function (format) {
+        this.pipe(new Speaker(format));
+    });*/
 });
 
 app.post('/api',function(req,res){
