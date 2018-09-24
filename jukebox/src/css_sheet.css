@@ -3,19 +3,47 @@
 .titleBar {
     /*position: absolute;*/
     font-family: 'Lobster', cursive;
-    font-size: 70px;
+    font-size: 250px;
     color: Black;
-    top: 0px;
-    height: 12%;
+    background:rgba(255,255,255,0.2);
     width: 100%;
-    background: linear-gradient(to bottom, #1F4E79 0%, #1F4E79 50);
-}
+    height: 800px; 
+    border-style: groove;
+    /*
+    height: 12%;
+    
+    background: linear-gradient(to bottom, #1F4E79 0%, #1F4E79 50); */
+    /* Bottom right text */
+
+    /*position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+*/}
+
+body, html {
+    height: 100%;
+  }
+
+  .parallax { 
+    /* The image used */
+    background-image: url("images/buildings.jpg");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
 
 .titleBottom {
     height: 5%; 
     width: 100%;
-    color: aqua; 
-    background: linear-gradient(to bottom, aqua 0%, aqua 50);
+    background: aqua; 
+
 }
 
 /* The sidebar menu */
@@ -45,6 +73,19 @@
     color: #f1f1f1;
 }
 
+.song {
+    border-bottom: 1px solid black;
+    /*color: grey;*/
+    background: black;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    /*position: absolute;*/
+    left: 50%;
+    background:rgba(255,255,255,0.6);
+    /*transform: translate(-50%, -50%)*/;
+}
+
 /* Style page content */
 .main {
     margin-left: 160px; /* Same as the width of the sidebar */
@@ -56,6 +97,8 @@
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+
 
 /* 
 * css sheet 

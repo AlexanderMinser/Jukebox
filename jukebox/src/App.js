@@ -9,7 +9,8 @@ import "./css_sheet.css";
 class Song extends Component {
   constructor(props) {
     super(props);
-    this.state = {name: props.data, 
+    this.state = {fileName: props.data,
+                  name: props.data.substr(0, props.data.length-4), 
                   artist: '',
                   album: '',
                   year: '',
@@ -27,7 +28,7 @@ class Song extends Component {
 
   render() {
     return (
-      <div onDoubleClick={() => this.playSong()}>{this.state.name}</div>
+      <div className="song" onDoubleClick={() => this.playSong()}>{this.state.name}</div>
     );
   }
 
@@ -55,7 +56,10 @@ class DirectoryFiles extends Component {
       songComponents.push(<Song data={song} />);
     }
     return (
-      <div>Songs: {songComponents}</div>
+      <div>
+        <div className="song">Songs:</div>
+        <div>{songComponents}</div>
+      </div>
     );
   }
 
@@ -75,17 +79,21 @@ class App extends Component {
   
 
   render() {
-    
+
+
     return (
       <div className="App">
-        <style>{'body { background-color: teal; }'}</style>        
-                
-           
-        <div className="titleBar">Jukebox</div>
-        <div className="titleBottom"></div>
-        <img src={require("./images/earbuds.jpeg")}  alt="earbuds"/>
-
+       {/* <style>{'body { background-color: teal; }'}</style>        
+          */}      
+        <div className="parallax">
+          <div className="titleBar">Jukebox</div>
+          <div className="titleBottom"></div>
         
+          {/*<img src={require("./images/buildings.jpg")}  height={"10%"} width={"100%"} alt="earbuds"/>
+          */}
+         
+          <DirectoryFiles />
+        </div>
         <div className="sidenav">
           <a href="#">About</a>
           <a href="#">Services</a>
@@ -93,7 +101,7 @@ class App extends Component {
           <a href="#">Contact</a>
         </div>
 
-        <DirectoryFiles />
+        
       </div>
     );
   }
